@@ -1,0 +1,31 @@
+<!--
+{
+  "title": "My first book!",
+  "author": {
+    "firstName": "Charles",
+    "lastName": "Jolley"
+  },
+  "title": "My second book!",
+  "author": {
+    "firstName": "Ryan",
+    "lastName": "Smith"
+  }
+}
+-->
+{#with author}}
+<div class="entry">
+  <h1>{{title}}</h1>
+  {{#with author}}
+  <h2>By {{firstName}} {{lastName}}</h2>
+  {{/with}}
+</div>
+
+<div class="entry">
+  <h1>{{title}}</h1>
+  {{#with author as |myAuthor|}}
+  <h2>By {{myAuthor.firstName}} {{myAuthor.lastName}}</h2>
+  {{else}}
+  <p class="empty">No author</p>
+  {{/with}}
+</div>
+{{/with}}

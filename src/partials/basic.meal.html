@@ -1,0 +1,27 @@
+<!--
+tod:
+  name:
+  - breakfast
+  - bunch
+  - lunch
+  - dinner
+  - fourth meal
+hangry:
+  yes:
+    - breakfast
+    - bunch
+    - lunch
+  no:
+    - lunch
+    - dinner
+    - fourth meal
+-->
+{{#with meal as |myMeal|}}
+<ul class="meal-items">
+  {{#each myMeal}}
+  <li>{{this}}</li>
+  {{/each}}
+</ul>
+{{else}}
+<p style="color:orange;">No soup for you</p>
+{{/with}}

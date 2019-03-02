@@ -1,0 +1,16 @@
+tod:
+  name:
+  - breakfast
+  - bunch
+  - lunch
+  - dinner
+  - fourth meal
+hangry:
+  yes:
+    - breakfast
+    - bunch
+    - lunch
+  no:
+    - lunch
+    - dinner
+    - fourth meal

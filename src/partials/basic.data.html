@@ -1,0 +1,9 @@
+<ul class="breakfast-items">
+  {{#each breakfast}}
+    <li>{{ this }}</li>
+  {{else}}
+    <li>No data found</li>
+  {{/each}}
+</ul>
+
+{{#if breakfast}}<p style="color:blue;">{{@key}}: {{this}}</p>{{/if}}

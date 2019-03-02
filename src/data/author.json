@@ -1,0 +1,12 @@
+{
+  "title": "My first book!",
+  "author": {
+    "firstName": "Charles",
+    "lastName": "Jolley"
+  },
+  "title": "My second book!",
+  "author": {
+    "firstName": "Ryan",
+    "lastName": "Smith"
+  }
+}

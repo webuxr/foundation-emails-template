@@ -1,33 +1,98 @@
 ---
 subject: My Basic Email Template Subject
+breakfast2:
+  - eggs
+  - toast
+  - bacon
+meal2:
+  tod:
+    name:
+    - breakfast
+    - bunch
+    - lunch
+    - dinner
+    - fourth meal
+  hangry:
+    yes:
+      - breakfast
+      - bunch
+      - lunch
+    no:
+      - lunch
+      - dinner
+      - fourth meal
+book2:
+  title: My first book!
+  author:
+    firstName: Charles
+    lastName: Jolley
+  title: My second book!
+  author:
+    firstName: Ryan
+    lastName: Smith
 ---
 
-<wrapper class="header">
-  <container>
-    <row class="collapse">
-      <columns small="6">
-        <img src="http://placehold.it/200x50/663399">
-      </columns>
-      <columns small="6">
-        <p class="text-right">BASIC</p>
-      </columns>
-    </row>
-  </container>
-</wrapper>
+{{> basic.header}}
 
 <container>
 
   <spacer size="16"></spacer>
-  
+
   <row>
     <columns small="12">
-      
+
       <h1>Hi, Susan Calvin</h1>
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iste, amet consequatur a veniam.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut optio nulla et, fugiat. Maiores accusantium nostrum asperiores provident, quam modi ex inventore dolores id aspernatur architecto odio minima perferendis, explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quos quasi itaque beatae natus fugit provident delectus, magnam laudantium odio corrupti sit quam. Optio aut ut repudiandae velit distinctio asperiores?</p>
       <callout class="primary">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit repellendus natus, sint ea optio dignissimos asperiores inventore a molestiae dolorum placeat repellat excepturi mollitia ducimus unde doloremque ad, alias eos!</p>
       </callout>
+
+      <h2>Test 1a: Breakfast via partial (YAML)</h2>
+      {{> basic.data}}
+
+      <h2>Test 1b: Breakfast in frontmatter</h2>
+      <ul class="breakfast-items">
+        {{#each breakfast2}}
+          <li>{{this}}</li>
+        {{else}}
+          <li>No data found</li>
+        {{/each}}
+      </ul>
+
+      <h2>Test 2a: Meals via partial (YAML)</h2>
+      {{> basic.meal}}
+
+      <h2>Test 2b: Meals in frontmatter</h2>
+      {{#with meal2 as |myMeal|}}
+      <ul class="meal-items">
+        {{#each myMeal}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
+      {{else}}
+      <p style="color:orange;">No soup for you</p>
+      {{/with}}
+
+      <h2>Test 3a: Authors via partial (JSON)</h2>
+      {{> basic.author}}
+
+      <h2>Test 3b: Authors in frontmatter</h2>
+      <div class="entry">
+        <h1>{{title}}</h1>
+        {{#with book2}}
+        <h2>By {{author.firstName}} {{author.lastName}}</h2>
+        {{/with}}
+      </div>
+
+      <div class="entry">
+        <h1>{{title}}</h1>
+        {{#with book2 as |myAuthor|}}
+        <h2>By {{myAuthor.firstName}}, {{myAuthor.lastName}}</h2>
+        {{else}}
+        <p class="empty">No author</p>
+        {{/with}}
+      </div>
     </columns>
   </row>
   <wrapper class="secondary">
